@@ -51,9 +51,7 @@ resource "yandex_storage_object" "yandex_gpt_instruction" {
 resource "yandex_function_iam_binding" "iam_cheatsheet_bot" {
     function_id = yandex_function.cheatsheet_bot.id
     role        = "functions.functionInvoker"
-    members = [
-        "system:allUsers",
-    ]
+    members     = [ "system:allUsers" ]
 }
 
 resource "yandex_resourcemanager_folder_iam_member" "ai_vision_cheatsheet_bot" {

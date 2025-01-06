@@ -1,4 +1,9 @@
-# Telegram bot messages in response to commands: /start, /help
+# Команды Telegram бота
+
+START_COMMAND = "/start"
+HELP_COMMAND = "/help"
+
+# Сообщения Telegram бота в ответ на соответствующие команды, перечисленные выше
 
 START_MESSAGE = """
 Я помогу подготовить ответ на экзаменационный вопрос по дисциплине "Операционные системы".
@@ -10,7 +15,7 @@ HELP_MESSAGE = """
 Пришлите мне фотографию с вопросом или наберите его текстом.
 """
 
-# Telegram bot messages in case of error
+# Сообщения Telegram бота в случае возникновения ошибки
 
 CANT_ANSWER_ERROR_MESSAGE = """
 Я не смог подготовить ответ на экзаменационный вопрос.
@@ -28,6 +33,6 @@ GET_UNHANDLED_MESSAGE_TYPE_ERROR_MESSAGE = """
 Я могу обработать только текстовое сообщение или фотографию.
 """
 
-# Status codes
+# Статусные коды
 
 SUCCESS = 200
