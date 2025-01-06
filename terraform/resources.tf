@@ -5,7 +5,7 @@ data "archive_source" "content" {
 }
 
 resource "yandex_function" "cheatsheet_bot" {
-    name               = "cheatsheet_bot"
+    name               = "cheatsheet-bot"
     description        = "Функция, обрабатывающая сообщения, отправляемые Telegram боту"
     entrypoint         = "index.handler"
     runtime            = "python312"
@@ -35,7 +35,7 @@ resource "telegram_bot_webhook" "webhook_cheatsheet_bot" {
 }
 
 resource "yandex_iam_service_account" "sa_cheatsheet_bot" {
-    name = "sa_cheatsheet_bot"
+    name = "sa-cheatsheet-bot"
 }
 
 resource "yandex_storage_bucket" "bucket_cheatsheet_bot" {
