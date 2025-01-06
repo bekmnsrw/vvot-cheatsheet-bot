@@ -1,6 +1,6 @@
 from pathlib import Path
 from requests import post
-from settings import FOLDER_ID, BUCKET_GPT_INSTRUCTION_KEY, BUCKET_NAME, YC_API_GPT_URL
+from settings import FOLDER_ID, BUCKET_GPT_INSTRUCTION_KEY, BUCKET_NAME, YC_API_GPT_URL, YC_API_OCR_URL
 from constants import SUCCESS
 
 def get_gpt_answer(question, token):
@@ -42,3 +42,27 @@ def get_gpt_answer(question, token):
         return None
     
     return final_alternatives[0]["message"].get("text")
+
+def get_recognized_text(base64_image, token):
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {token}",
+    }
+
+    json = {
+        "mimeType": "image/jpeg",
+        "languageCodes": ["ru", "en"],
+        "content": base64_image,
+    }
+
+    response = post(url=YC_API_OCR_URL, headers=headers, json=json)
+
+    if response.status_code != SUCCESS:
+        return None
+    
+    recognized_text = response.json()["result"]["textAnnotation"]["fullText"]
+
+    if recognized_text:
+        return recognized_text
+    else:
+        return None

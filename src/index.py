@@ -1,7 +1,7 @@
 from json import loads
 from constants import SUCCESS, START_COMMAND, HELP_COMMAND, START_MESSAGE, HELP_MESSAGE, GET_UNHANDLED_MESSAGE_TYPE_ERROR_MESSAGE, CANT_ANSWER_ERROR_MESSAGE, GET_INCORRECT_PHOTO_ERROR_MESSAGE
 from telegram_service import send_message, get_image_by_id
-from yandex_service import get_gpt_answer
+from yandex_service import get_gpt_answer, get_recognized_text
 
 def handler(event, context):
     update = loads(event["body"])
@@ -49,10 +49,9 @@ def handle_text_message(text, message, token):
 
 def handle_image_message(image, message, token):
     image_id = image[-1]["file_id"]
-    image = get_image_by_id(image_id)
+    base64_image = get_image_by_id(image_id)
     
-    # TODO: Add YandexOCR answer
-    recognized_text = "" 
+    recognized_text = get_recognized_text(base64_image=base64_image, token=token) 
 
     if recognized_text:
         handle_text_message(recognized_text, message, token)
