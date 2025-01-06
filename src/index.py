@@ -1,6 +1,7 @@
 from json import loads
 from constants import SUCCESS, START_COMMAND, HELP_COMMAND, START_MESSAGE, HELP_MESSAGE, GET_UNHANDLED_MESSAGE_TYPE_ERROR_MESSAGE, CANT_ANSWER_ERROR_MESSAGE, GET_INCORRECT_PHOTO_ERROR_MESSAGE
-from telegram import send_message, get_image_by_id
+from telegram_service import send_message, get_image_by_id
+from yandex_service import get_gpt_answer
 
 def handler(event, context):
     update = loads(event["body"])
@@ -10,7 +11,9 @@ def handler(event, context):
         token = context.token["access_token"]
         handle_message(message, token)
 
-    return { "statusCode": SUCCESS }
+    return { 
+        "statusCode": SUCCESS,
+    }
 
 def handle_message(message, token):
     # Получаем текст сообщения, если он есть
@@ -37,8 +40,7 @@ def handle_message(message, token):
         send_message(GET_UNHANDLED_MESSAGE_TYPE_ERROR_MESSAGE, message)
 
 def handle_text_message(text, message, token):
-    # TODO: Add YandexGPT answer
-    gpt_answer = ""
+    gpt_answer = get_gpt_answer(question=text, token=token)
 
     if gpt_answer:
         send_message(gpt_answer, message)

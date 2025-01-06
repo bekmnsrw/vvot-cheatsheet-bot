@@ -9,14 +9,18 @@ def send_message(text, message):
     json = {
         "chat_id": message["chat"]["id"],
         "text": text,
-        "reply_parameters": { "message_id": message["message_id"] }
+        "reply_parameters": { 
+            "message_id": message["message_id"],
+        },
     }
 
     post(url=url, json=json)
 
 def get_image_by_id(id):
     url = f"{TELEGRAM_API_URL}/getFile"
-    params = { "file_id": id }
+    params = { 
+        "file_id": id,
+    }
     
     response = get(url=url, params=params)
 
