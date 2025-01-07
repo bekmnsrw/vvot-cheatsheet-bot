@@ -33,6 +33,6 @@ variable "sa_key_file_path" {
 
 variable "yandex_zone" {
     type = string
-    description = "Зоны доступности Yandex Cloud"
+    description = "Зона доступности Yandex Cloud"
     default = "ru-central1-a"
 }

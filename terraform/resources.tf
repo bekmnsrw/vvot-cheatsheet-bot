@@ -13,7 +13,7 @@ resource "yandex_function" "cheatsheet_bot" {
     memory             = 128
     service_account_id = yandex_iam_service_account.sa_cheatsheet_bot.id
     environment = {
-        TELEGRAM_BOT_TOKEN          = var.tg_bot_key
+        TG_BOT_KEY                  = var.tg_bot_key
         FOLDER_ID                   = var.folder_id
         BUCKET_NAME                 = var.bucket_name
         BUCKET_GPT_INSTRUCTION_KEY  = var.bucket_gpt_instruction_key
