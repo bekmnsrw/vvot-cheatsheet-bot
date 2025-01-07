@@ -1,11 +1,11 @@
 variable "cloud_id" {
     type        = string
-    description = "Идентификатор облака"
+    description = "Идентификатор облака в Yandex Cloud"
 }
 
 variable "folder_id" {
     type        = string
-    description = "Идентификатор каталога"
+    description = "Идентификатор каталога в Yandex Cloud"
 }
 
 variable "tg_bot_key" {
@@ -31,30 +31,8 @@ variable "sa_key_file_path" {
     default     = "~/.yc-keys/key.json"
 }
 
-variable "terraform_version" {
-    type = string
-    description = "Версия Terraform"
-    default = ">= 0.13"
-}
-
 variable "yandex_zone" {
     type = string
     description = "Зоны доступности Yandex Cloud"
     default = "ru-central1-a"
-}
-
-variable "yandex_source" {
-    type    = string
-    default = "yandex-cloud/yandex"
-}
-
-variable "telegram_source" {
-    type    = string
-    default = "yi-jiayu/telegram"
-}
-
-variable "telegram_version" {
-    type        = string
-    description = "Версия Terraform Provider for Telegram"
-    default     = "0.3.1"
 }

@@ -1,14 +1,14 @@
 terraform {
     required_providers {
         yandex = {
-            source = var.yandex_source
+            source = "yandex-cloud/yandex"
         }    
         telegram = {
-            source  = var.telegram_source
-            version = var.telegram_version
+            source  = "yi-jiayu/telegram"
+            version = "0.3.1"
         }
     }
-    required_version = var.terraform_version
+    required_version = ">= 0.13"
 }
 
 provider "yandex" {
