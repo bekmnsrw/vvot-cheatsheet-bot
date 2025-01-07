@@ -1,4 +1,4 @@
-data "archive_source" "content" {
+data "archive_file" "vvot_task1" {
     type        = "zip"
     source_dir  = "../src"
     output_path = "../build/content.zip"
@@ -9,7 +9,7 @@ resource "yandex_function" "cheatsheet_bot" {
     description        = "Функция, обрабатывающая сообщения, отправляемые Telegram боту"
     entrypoint         = "index.handler"
     runtime            = "python312"
-    user_hash          = archive_source.content.output_sha256
+    user_hash          = data.archive_file.vvot_task1.output_sha256
     memory             = 128
     service_account_id = yandex_iam_service_account.sa_cheatsheet_bot.id
     environment = {
@@ -19,7 +19,7 @@ resource "yandex_function" "cheatsheet_bot" {
         BUCKET_GPT_INSTRUCTION_KEY  = var.bucket_gpt_instruction_key
     }
     content {
-        zip_filename = archive_source.content.output_path
+        zip_filename = data.archive_file.vvot_task1.output_path
     }
     mounts {
         name = var.bucket_name
