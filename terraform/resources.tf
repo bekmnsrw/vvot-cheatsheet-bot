@@ -11,6 +11,7 @@ resource "yandex_function" "cheatsheet_bot" {
     runtime            = "python312"
     user_hash          = data.archive_file.vvot_task1.output_sha256
     memory             = 128
+    execution_timeout  = 40
     service_account_id = yandex_iam_service_account.sa_cheatsheet_bot.id
     environment = {
         TG_BOT_KEY                  = var.tg_bot_key
