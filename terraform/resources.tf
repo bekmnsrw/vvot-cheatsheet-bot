@@ -1,7 +1,7 @@
 data "archive_file" "vvot_task1" {
     type        = "zip"
     source_dir  = "../src"
-    output_path = "../build/content.zip"
+    output_path = "../build/vvot_task1.zip"
 }
 
 resource "yandex_function" "cheatsheet_bot" {

@@ -1,6 +1,7 @@
 from pathlib import Path
 from requests import post
-from settings import FOLDER_ID, BUCKET_GPT_INSTRUCTION_KEY, BUCKET_NAME, YC_API_GPT_URL, YC_API_OCR_URL
+from settings import FOLDER_ID, BUCKET_GPT_INSTRUCTION_KEY, BUCKET_NAME
+from settings import YC_API_GPT_URL, YC_API_OCR_URL
 from constants import SUCCESS
 
 def get_gpt_answer(question, token):

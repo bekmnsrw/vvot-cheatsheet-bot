@@ -1,5 +1,8 @@
 from json import loads
-from constants import SUCCESS, START_COMMAND, HELP_COMMAND, START_MESSAGE, HELP_MESSAGE, GET_UNHANDLED_MESSAGE_TYPE_ERROR_MESSAGE, CANT_ANSWER_ERROR_MESSAGE, GET_INCORRECT_PHOTO_ERROR_MESSAGE
+from constants import SUCCESS
+from constants import START_COMMAND, HELP_COMMAND
+from constants import START_MESSAGE, HELP_MESSAGE
+from constants import GET_UNHANDLED_MESSAGE_TYPE_ERROR_MESSAGE, CANT_ANSWER_ERROR_MESSAGE, GET_INCORRECT_PHOTO_ERROR_MESSAGE
 from telegram_service import send_message, get_image_by_id
 from yandex_service import get_gpt_answer, get_recognized_text
 
